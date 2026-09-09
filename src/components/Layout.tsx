@@ -9,7 +9,6 @@ export function Layout() {
           <span className="brand-mark" aria-hidden="true" />
           <div>
             <p className="brand-kicker">Bar Assistant</p>
-            <h1>Помічник бармена</h1>
           </div>
         </NavLink>
 
