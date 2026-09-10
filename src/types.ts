@@ -60,6 +60,7 @@ export type Cocktail = {
   garnish: string
   ingredients: RecipeLine[]
   steps: string[]
+  volumeMl?: number
   note?: string
   effect?: string
 }

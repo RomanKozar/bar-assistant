@@ -41,7 +41,10 @@ export function RecipePage() {
             : sectionLabels[cocktail.section]}
         </p>
         <h2>{cocktail.name}</h2>
-        <p className="recipe-glass">{glassLabels[cocktail.glass]}</p>
+        <p className="recipe-glass">
+          {cocktail.volumeMl ? `${cocktail.volumeMl} мл · ` : null}
+          {glassLabels[cocktail.glass]}
+        </p>
       </header>
 
       {photo ? (

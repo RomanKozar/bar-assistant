@@ -7,7 +7,7 @@ const folderBySection: Record<DrinkSection, string> = {
   coffee: '/Images/Coffee',
 }
 
-const sectionsWithPhotos: DrinkSection[] = ['shots', 'alcoholic', 'virgin']
+const sectionsWithPhotos: DrinkSection[] = ['shots', 'alcoholic', 'virgin', 'coffee']
 
 export function drinkPhoto(drink: Cocktail): string | undefined {
   if (!sectionsWithPhotos.includes(drink.section)) return undefined

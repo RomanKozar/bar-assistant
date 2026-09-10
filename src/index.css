@@ -596,37 +596,188 @@ select {
   font-size: 13px;
 }
 
+.mobile-header,
+.mobile-nav {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .shell {
     grid-template-columns: 1fr;
+    min-height: 100svh;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
   }
 
   .sidebar {
-    position: static;
-    height: auto;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 16px;
+    display: none;
   }
 
-  .nav {
-    flex-direction: row;
-    overflow: auto;
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 12px 16px;
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+    border-bottom: 1px solid var(--line);
+    background: rgba(16, 14, 12, 0.96);
+    backdrop-filter: blur(8px);
+  }
+
+  .mobile-nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    gap: 2px;
+    padding: 6px 4px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--line);
+    background: rgba(16, 14, 12, 0.98);
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 4px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-link.active,
+  .mobile-nav-link:active {
+    background: rgba(212, 175, 55, 0.14);
+    color: var(--gold-2);
   }
 
   .content {
-    padding: 22px 16px 40px;
+    padding: 16px 14px 24px;
+    max-width: none;
+  }
+
+  .page {
+    gap: 20px;
   }
 
   .page-head h2 {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .category-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .category-card {
-    min-height: 220px;
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .category-card h3 {
+    font-size: 26px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+
+  .card-body {
+    padding: 8px 10px 10px;
+  }
+
+  .search,
+  .select {
+    padding: 14px 16px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .panel {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .lines li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 0;
+  }
+
+  .line-amount {
+    font-size: 15px;
+  }
+
+  .recipe-photo img {
+    max-height: min(52vh, 420px);
+  }
+
+  .steps li {
+    padding-left: 32px;
+    font-size: 15px;
+  }
+
+  .steps li::before {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .back {
+    font-size: 15px;
+    padding: 4px 0;
+    min-height: 44px;
+    align-items: center;
+    display: inline-flex;
+  }
+
+  .btn {
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .toolbar,
+  .toolbar-2,
+  .split,
+  .stats,
+  .spec,
+  .spec-shot {
+    grid-template-columns: 1fr;
+  }
+
+  .chip {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-nav-link {
+    font-size: 10px;
+    padding-inline: 2px;
+  }
+
+  .page-head h2 {
+    font-size: 24px;
+  }
+
+  .grid {
+    gap: 6px;
   }
 }

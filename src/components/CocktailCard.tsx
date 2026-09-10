@@ -38,6 +38,8 @@ export function CocktailCard({ cocktail }: Props) {
         <h3>{cocktail.name}</h3>
         {cocktail.nameUk !== cocktail.name ? <p className="card-uk">{cocktail.nameUk}</p> : null}
         <p className="card-meta">
+          {cocktail.volumeMl ? `${cocktail.volumeMl} мл` : null}
+          {cocktail.volumeMl ? ' · ' : null}
           {cocktail.section === 'shots'
             ? shotMeta(cocktail)
             : glassLabels[cocktail.glass]}

@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import { drinksIn } from '../data/cocktails'
 import { sectionMeta, sectionOrder } from '../data/sections'
-import { useBar } from '../context/bar'
-import { makeability } from '../lib/matching'
 
 export function DashboardPage() {
-  const { stock } = useBar()
-
   return (
     <div className="page home">
       <header className="page-head">
@@ -19,15 +15,15 @@ export function DashboardPage() {
         {sectionOrder.map((section) => {
           const meta = sectionMeta[section]
           const drinks = drinksIn(section)
-          const ready = drinks.filter((item) => makeability(item, stock) === 'ready').length
+          const countLabel =
+            section === 'shots'
+              ? `${drinks.length} шотів`
+              : `${drinks.length} позицій`
           return (
             <Link key={section} to={meta.path} className={`category-card category-${section}`}>
               <p className="eyebrow">{meta.hint}</p>
               <h3>{meta.title}</h3>
-              <p className="category-count">
-                {drinks.length} позицій
-                {ready > 0 ? ` · ${ready} можна зараз` : ''}
-              </p>
+              <p className="category-count">{countLabel}</p>
             </Link>
           )
         })}
